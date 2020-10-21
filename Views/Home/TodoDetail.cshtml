@@ -1,0 +1,24 @@
+﻿@model TodoListWeb.Models.TodoListModel;
+@{
+    ViewData["Title"] = @Model.title;
+}
+
+<div class="text-center">
+    <h3>
+        @Model.title
+        <small class="text-muted"><span class="badge badge-info">@Model.listType</span></small>
+    </h3>
+    <div class="text-right">
+        <h6>創建日期： @Model.createDateTime</h6>
+        <h6>修改日期： @Model.updateDateTime</h6>
+    </div>
+    <hr />
+    <br />
+    <div class="text-center">
+        <label class="text-secondary">@Model.content</label>
+    </div>
+
+    <div class="text-center pt-5">
+        <a class="btn btn-success" asp-controller="Home" asp-action="Index">返回</a>
+    </div>
+</div>

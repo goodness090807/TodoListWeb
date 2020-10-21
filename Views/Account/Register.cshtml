@@ -1,0 +1,75 @@
+﻿@model TodoListWeb.ViewModels.Account.RegisterViewModel
+@{
+    ViewBag.Title = "使用者註冊";
+}
+<div class="row align-items-center DivPageCenter">
+    <div class="col-sm-12 text-center">
+        <h1>代辦清單使用者註冊</h1>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-4 LoginDiv">
+        <form asp-controller="Account" asp-action="Register" method="post" autocomplete="off">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label asp-for="userAccount"></label>
+                <div class="input-group mb-3">
+                    <input type="text" asp-for="userAccount" class="form-control" placeholder="輸入帳號" />
+                </div>
+                <span asp-validation-for="userAccount" class="form-text text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="userPassword"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="userPassword" class="form-control" placeholder="輸入密碼" />
+                </div>
+                <span asp-validation-for="userPassword" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmUserPassword"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="ConfirmUserPassword" class="form-control" placeholder="再次輸入密碼" />
+                </div>
+                <span asp-validation-for="ConfirmUserPassword" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="userName"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="userName" class="form-control" placeholder="使用者名稱" />
+                </div>
+                <span asp-validation-for="userName" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="sex"></label>
+                <div class="input-group mb-3">
+                    <input type="radio" asp-for="sex" class="form-control" value="true" checked="checked" /> 男生
+                    <input type="radio" asp-for="sex" class="form-control" value="false" /> 女生
+                </div>
+                <span asp-validation-for="sex" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="mail"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="mail" class="form-control" placeholder="信箱" />
+                </div>
+                <span asp-validation-for="mail" class="form-text text-danger"></span>
+            </div>
+
+            @*查無帳密的錯誤訊息*@
+            <div asp-validation-summary="ModelOnly" class="form-text text-danger"></div>
+
+            <input class="btn btn-dark btn-block " type="submit" value="註冊使用者">
+            <br />
+        </form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+</div>

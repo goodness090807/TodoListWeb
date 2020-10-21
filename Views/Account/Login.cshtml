@@ -1,0 +1,50 @@
+﻿@model TodoListWeb.ViewModels.Account.LoginViewModel
+@{
+    ViewBag.Title = "使用者登入";
+    var returnUrl = Context.Request.Query["returnurl"];
+}
+<div class="row align-items-center DivPageCenter">
+    <div class="col-sm-12 text-center">
+        <h1>代辦清單系統登入</h1>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-4 LoginDiv">
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@returnUrl" method="post" autocomplete="off">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label asp-for="userAccount"></label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" asp-for="userAccount" class="form-control" placeholder="輸入帳號" />
+                </div>
+                <span asp-validation-for="userAccount" class="form-text text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="userPassword"></label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <input asp-for="userPassword" class="form-control" placeholder="輸入密碼" />
+                </div>
+                <span asp-validation-for="userPassword" class="form-text text-danger"></span>
+            </div>
+
+            @*查無帳密的錯誤訊息*@
+            <div asp-validation-summary="ModelOnly" class="form-text text-danger"></div>
+
+            <input class="btn btn-dark btn-block " type="submit" value="登入">
+            <a href="Register" class="btn btn-dark btn-block">點我註冊新帳號</a>
+            <br />
+        </form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+</div>

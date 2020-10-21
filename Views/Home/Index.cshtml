@@ -1,0 +1,50 @@
+﻿@model List<TodoListWeb.Models.TodoListModel>;
+@{
+    ViewData["Title"] = "使用者代辦事項";
+}
+
+<div class="text-center">
+    <h1 class="display-4">歡迎回來!!!</h1>
+    <h3>以下是您的代辦事項</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    標題
+                </th>
+                <th style="width:100px;">
+                    更新
+                </th>
+                <th style="width:100px;">
+                    刪除
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr><td colspan="3">還未新增任何代辦事項哦!!!</td></tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="text-dark d-block" asp-controller="Home" asp-action="TodoDetail" asp-route-id="@item.listId">@item.title</a>
+                        </td>
+                        <th>
+                            <a class="form-control btn btn-info" asp-controller="Home" asp-action="TodoUpdate" asp-route-id="@item.listId">更新</a>
+                        </th>
+                        <td>
+                            <a class="form-control btn btn-danger" asp-controller="Home" asp-action="TodoDelete" asp-route-id="@item.listId" onclick="return confirm('確定刪除?')">刪除</a>
+                        </td>
+                    </tr>
+                }
+            }
+            <tr><td colspan="3"><a class="form-control btn btn-outline-success" asp-controller="Home" asp-action="TodoCreate"> + </a></td></tr>
+        </tbody>
+    </table>
+
+</div>
